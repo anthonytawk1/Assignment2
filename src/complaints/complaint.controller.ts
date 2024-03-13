@@ -45,7 +45,7 @@ class ComplaintController {
       if (error instanceof Error && error.message === errorCode.conflict.message) {
         res.status(errorCode.conflict.statusCode).send(errors.categoryAlreadyExists);
       } else if (error instanceof Error && error.message === errorCode.notFound.message) {
-        res.status(errorCode.notFound.statusCode).send(errors.categoryNotFound);
+        res.status(errorCode.notFound.statusCode).send(errors.complaintNotFound);
       } else {
         res.status(errorCode.internalServerError.statusCode).send(errorCode.internalServerError.message);
       }
@@ -60,7 +60,7 @@ class ComplaintController {
       res.send(result);
     } catch (error) {
       if (error instanceof Error && error.message === errorCode.notFound.message) {
-        res.status(errorCode.notFound.statusCode).send(errors.categoryNotFound);
+        res.status(errorCode.notFound.statusCode).send(errors.complaintNotFound);
       } else {
         res.status(errorCode.internalServerError.statusCode).send(errorCode.internalServerError.message);
       }
@@ -74,7 +74,7 @@ class ComplaintController {
       res.send(result);
     } catch (error) {
       if (error instanceof Error && error.message === errorCode.notFound.message) {
-        res.status(errorCode.notFound.statusCode).send(errors.categoryNotFound);
+        res.status(errorCode.notFound.statusCode).send(errors.complaintNotFound);
       } else {
         res.status(errorCode.internalServerError.statusCode).send(errorCode.internalServerError.message);
       }
@@ -92,7 +92,7 @@ class ComplaintController {
       res.send(result);
     } catch (error) {
       if (error instanceof Error && error.message === errorCode.notFound.message) {
-        res.status(errorCode.notFound.statusCode).send(errors.categoryNotFound);
+        res.status(errorCode.notFound.statusCode).send(errors.complaintNotFound);
       } else {
         res.status(errorCode.internalServerError.statusCode).send(errorCode.internalServerError.message);
       }
@@ -107,7 +107,7 @@ class ComplaintController {
         res.send(result);
     }catch (error){
         if (error instanceof Error && error.message === errorCode.notFound.message) {
-            res.status(errorCode.notFound.statusCode).send(errors.categoryNotFound);
+            res.status(errorCode.notFound.statusCode).send(errors.complaintNotFound);
           } else {
             res.status(errorCode.internalServerError.statusCode).send(errorCode.internalServerError.message);
           }

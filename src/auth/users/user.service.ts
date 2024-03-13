@@ -57,17 +57,20 @@ class UserService {
       throw new Error(errorCodes.unauthorized.message);
     }
     const isEqual = await bcrypt.compare(password, userFound.password);
-    if (!isEqual) {
+    const passwordAttemptsLeft = userFound.passwordAttemptsLeft;
+    if (!isEqual && passwordAttemptsLeft !== 0) {
       userFound.passwordAttemptsLeft -= 1;
       await userFound.save();
       throw new Error(errorCodes.unauthorized.message);
     }
 
     if (userFound.isLocked) {
+      console.log('isLocked');
       throw new Error(errorCodes.unauthorized.message);
     }
 
     if (userFound.passwordAttemptsLeft === 0) {
+      console.log('password attempts left = 0');
       await this.lockUser(userFound._id);
       throw new Error(errorCodes.unauthorized.message);
     }
@@ -95,6 +98,7 @@ class UserService {
 
     return user;
   }
+
   async changePassword(
     newPassword: string,
     oldPassword: string,
@@ -247,6 +251,7 @@ class UserService {
       };
     }
   }
+  
   async resetPassword(newPassword: string, userId: string) {
     const userFound = await userModel.findById(userId);
     if (!userFound) {

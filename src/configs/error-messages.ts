@@ -11,8 +11,8 @@ export default {
   categoryAlreadyExists: {
     message: "category already exists",
   },
-  categoryNotFound: {
-    message: "category not found",
+  complaintNotFound: {
+    message: "complaint not found",
   },
   forbidden: {
     message: "Forbidden",
